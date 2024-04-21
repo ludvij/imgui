@@ -2,13 +2,12 @@ project "ImGui"
 	kind "StaticLib"
 	language "C++"
 	cppdialect"c++20"
-    staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("%{wks.location}/bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin/intermediates/" .. outputDir .. "/%{prj.name}")
 
-	files
-	{
+	files {
 		"imconfig.h",
 		"imgui.h",
 		"imgui.cpp",
@@ -20,6 +19,18 @@ project "ImGui"
 		"imstb_textedit.h",
 		"imstb_truetype.h",
 		"imgui_demo.cpp",
+		"misc/freetype/imgui_freetype.cpp",
+		"misc/freetype/imgui_freetype.h"
+	}
+
+
+	includedirs {
+		".",
+		"%{IncludeDir.freetype}"
+	}
+
+	defines {
+		"IMGUI_ENABLE_FREETYPE"
 	}
 
 	filter "system:windows"
@@ -33,7 +44,9 @@ project "ImGui"
 		runtime "Debug"
 		symbols "on"
 
+
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
 		symbols "off"
+
