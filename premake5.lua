@@ -20,7 +20,9 @@ project "ImGui"
 		"imstb_truetype.h",
 		"imgui_demo.cpp",
 		"misc/freetype/imgui_freetype.cpp",
-		"misc/freetype/imgui_freetype.h"
+		"misc/freetype/imgui_freetype.h",
+		"misc/cpp/imgui_stdlib.cpp",
+		"misc/cpp/imgui_stdlib.h"
 	}
 
 
